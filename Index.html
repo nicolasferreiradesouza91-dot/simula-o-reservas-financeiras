@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Simulação de Reservas Financeiras</title>
+
+  <!-- Fonte diferente do padrão (Poppins) -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 40px 16px;
+      font-family: "Poppins", system-ui, -apple-system, sans-serif;
+      background: #0f172a;
+      color: #e5e7eb;
+      display: flex;
+      justify-content: center;
+    }
+
+    .wrapper {
+      max-width: 1000px;
+      width: 100%;
+      background: #020617;
+      border-radius: 18px;
+      padding: 32px 28px 40px;
+      box-shadow: 0 24px 60px rgba(15, 23, 42, 0.8);
+      border: 1px solid #1f2937;
+    }
+
+    h1 {
+      margin: 0 0 16px;
+      font-size: 2rem;
+      font-weight: 700;
+      text-align: center;
+      letter-spacing: 0.03em;
+      color: #f9fafb;
+    }
+
+    p.sub {
+      margin: 0 0 24px;
+      text-align: center;
+      font-size: 0.95rem;
+      color: #9ca3af;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.75rem;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: linear-gradient(120deg, #22c55e, #06b6d4);
+      color: #0b1120;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .badge span.dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #0b1120;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      margin-top: 8px;
+      background: #020617;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid #1f2937;
+    }
+
+    thead {
+      background: linear-gradient(135deg, #4f46e5, #06b6d4);
+    }
+
+    thead th {
+      padding: 14px 10px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-align: center;
+      color: #f9fafb;
+      border-right: 1px solid rgba(15, 23, 42, 0.28);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    thead th:last-child {
+      border-right: none;
+    }
+
+    tbody tr:nth-child(even) {
+      background: #020617;
+    }
+
+    tbody tr:nth-child(odd) {
+      background: #020617;
+    }
+
+    tbody td {
+      padding: 10px 10px;
+      font-size: 0.9rem;
+      border-top: 1px solid #111827;
+      border-right: 1px solid #111827;
+      text-align: center;
+      color: #e5e7eb;
+    }
+
+    tbody td:last-child {
+      border-right: none;
+    }
+
+    tbody tr:first-child td {
+      border-top: none;
+    }
+
+    .num {
+      font-variant-numeric: tabular-nums;
+    }
+
+    .money {
+      font-variant-numeric: tabular-nums;
+      text-align: right;
+      padding-right: 14px;
+    }
+
+    .highlight-row {
+      background: radial-gradient(circle at top left, rgba(34, 197, 94, 0.18), transparent 50%),
+                  #020617;
+    }
+
+    .highlight-row td {
+      font-weight: 600;
+      border-top: 1px solid #22c55e;
+    }
+
+    .highlight-cell {
+      background: linear-gradient(135deg, #22c55e, #a3e635);
+      color: #022c22;
+      font-weight: 700;
+      border-radius: 999px;
+      padding: 6px 14px;
+      display: inline-block;
+      min-width: 120px;
+      text-align: center;
+    }
+
+    .positive {
+      color: #4ade80;
+      font-weight: 600;
+    }
+
+    .note {
+      margin-top: 18px;
+      font-size: 0.8rem;
+      color: #9ca3af;
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .note span.label {
+      font-weight: 600;
+      color: #e5e7eb;
+    }
+
+    @media (max-width: 720px) {
+      body {
+        padding: 16px 8px;
+      }
+      .wrapper {
+        padding: 22px 16px 28px;
+      }
+      h1 {
+        font-size: 1.4rem;
+      }
+      thead th, tbody td {
+        font-size: 0.8rem;
+        padding: 8px 6px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div style="text-align: center;">
+      <div class="badge">
+        <span class="dot"></span>
+        Simulação de Reservas | Projeto em HTML
+      </div>
+    </div>
+    <h1>Simulação de Reservas Financeiras</h1>
+    <p class="sub">
+      Crescimento de uma reserva aplicada corretamente ao longo dos anos, com formatações visuais para destacar os dados mais importantes.
+    </p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Ano</th>
+          <th>Depósito Anual (R$)</th>
+          <th>Saldo Inicial (R$)</th>
+          <th>Rendimento no Ano (R$)</th>
+          <th>Saldo Final (R$)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="num">1</td>
+          <td class="money"><strong>1.000,00</strong></td>
+          <td class="money">0,00</td>
+          <td class="money positive"><em>100,00</em></td>
+          <td class="money"><strong>1.100,00</strong></td>
+        </tr>
+        <tr>
+          <td class="num">2</td>
+          <td class="money"><strong>1.000,00</strong></td>
+          <td class="money">1.100,00</td>
+          <td class="money positive"><em>210,00</em></td>
+          <td class="money"><strong>2.310,00</strong></td>
+        </tr>
+        <tr>
+          <td class="num">3</td>
+          <td class="money"><strong>1.000,00</strong></td>
+          <td class="money">2.310,00</td>
+          <td class="money positive"><em>331,50</em></td>
+          <td class="money"><strong>3.641,50</strong></td>
+        </tr>
+        <tr>
+          <td class="num">4</td>
+          <td class="money"><strong>1.000,00</strong></td>
+          <td class="money">3.641,50</td>
+          <td class="money positive"><em>464,15</em></td>
+          <td class="money"><strong>5.105,65</strong></td>
+        </tr>
+        <tr class="highlight-row">
+          <td class="num">5</td>
+          <td class="money"><strong>1.000,00</strong></td>
+          <td class="money">5.105,65</td>
+          <td class="money positive"><em>610,57</em></td>
+          <td class="money">
+            <span class="highlight-cell">6.716,22</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="note">
+      <span><span class="label">Dica visual:</span> o último ano da simulação está em destaque com cor, fonte em negrito e bordas diferentes.</span>
+      <span><span class="label">Obs.:</span> este layout usa fonte Poppins e um esquema de cores totalmente diferente do padrão da planilha original.</span>
+    </div>
+  </div>
+</body>
+</html>
